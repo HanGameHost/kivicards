@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Название: ' + ${track.trackname}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: mainheader"></div>
+<div class="div-panel">
+    <h1>Изменение карточек</h1>
+    <div th:each="el:${track}">
+        <form th:object="${track}" method="post">
+            <p>Название карточек</p>
+            <input class="form-control" th:field="*{trackname}" type="text" name="trackname" placeholder="Введите название карточек">
+            <div style="color: red " th:if="${#fields.hasErrors('trackname')}" th:errors="*{trackname}"></div>
+            <p>Файл</p>
+            <input class="form-control" th:field="*{trackfile}" type="file" name="trackfile" placeholder="Выберите файл">
+            <div style="color: red " th:if="${#fields.hasErrors('trackfile')}" th:errors="*{trackfile}"></div>
+            <p>Выберите жанр</p>
+            <select class="form-select" name="genre">
+                <div th:each="el : ${genre}">
+                    <option th:text="${el.genrename}" th:value="${el.id}"></option>
+                </div>
+            </select>
+            <div style="color: red " th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
+            <p>Выберите издателя</p>
+            <select class="form-select" name="label">
+                <div th:each="el : ${label}">
+                    <option th:text="${el.labelname}" th:value="${el.id}"></option>
+                </div>
+            </select>
+            <div style="color: red " th:if="${#fields.hasErrors('label')}" th:errors="*{label}"></div>
+            <p>Выберите продюсера</p>
+            <select class="form-select" name="label">
+                <div th:each="el : ${producer}">
+                    <option th:text="${el.lastname}" th:value="${el.id}"></option>
+                </div>
+            </select>
+            <div style="color: red " th:if="${#fields.hasErrors('producer')}" th:errors="*{producer}"></div>
+            <br>
+            <button type="submit" class="btn btn-outline-primary mybtn">Сохранить изменения</button>
+        </form>
+    </div>
+</div>
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

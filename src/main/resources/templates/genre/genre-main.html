@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Альбом</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: mainheader"></div>
+
+<div class="div-panel">
+  <a class="btn btn-outline-primary mybtn" href="/genre/add/">Добавить жанр</a>
+
+  <h1>Все жанры</h1>
+  <div th:each="el : ${genre}">
+    <h3>Подробнее: </h3>
+    <p>Название жанра</p>
+    <p class="myp" th:text="${el.genrename}"></p>
+    <a th:href="'/genre/' + ${el.id}" class="btn btn-outline-secondary mybtn">Подробнее</a>
+  </div>
+</div>
+
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

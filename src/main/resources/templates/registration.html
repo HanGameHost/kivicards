@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+</head>
+<body>
+<div class="reg-cen">
+  <h1>Регистрация</h1>
+  <div th:if="${error}">
+    <p th:text="${error}"></p>
+  </div>
+  <form th:action="@{/registration}" method="post">
+    <div><label> Фамилия : <input type="text" name="lastname"/> </label></div>
+    <div><label> Имя : <input type="text" name="firstname"/> </label></div>
+    <div><label> Отчество : <input type="text" name="middlename"/> </label></div>
+    <div><label> Email : <input type="email" name="email"/> </label></div>
+    <div><label> Логин : <input type="text" name="username"/> </label></div>
+    <div><label> Пароль: <input type="password" name="password"/> </label></div>
+    <div><label> Аватар : <input type="file" name="avatar"/> </label></div>
+    <div><input type="submit" class="btn btn-outline-primary mybtn" value="Зарегистрироваться"/></div>
+  </form>
+  <a class="btn btn-outline-secondary mybtn" href="/login" >Войти</a>
+</div>
+
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

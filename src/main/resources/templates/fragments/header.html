@@ -1,0 +1,24 @@
+<div th:fragment="mainheader">
+    <header class="p-3 text-bg-dark">
+        <nav class="nav navbar navbar-expand-sm navbar-toggleable-sm d-inline-flex navbar-light box-shadow mb-3">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <a href="/" class="navbar-brand" style="color: #ff0000;">KiviCards</a>
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" class="nav-link px-125 text-secondary">Главная</a></li>
+                    <li><a href="/playlist/" class="nav-link px-125 text-white">Корзина</a></li>
+                    <li><a href="/track/" class="nav-link px-125 text-white">Товар</a></li>
+                    <li><a href="/filter/" class="nav-link px-125 text-white">Поиск</a></li>
+                </ul>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" class="btn btn-outline-danger" value="Выйти"/>
+                </form>
+            </div>
+        </div>
+        </nav>
+    </header>
+</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Корзина: ' + ${playlist.playlistname}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: mainheader"></div>
+<div class="div-panel">
+    <h1>Изменение корзины</h1>
+    <div th:each="el:${playlist}">
+        <form th:object="${playlist}" method="post">
+            <p>Название магазина</p>
+            <input class="form-control" th:field="*{playlistname}" type="text" name="playlistname" placeholder="Введите название магазина">
+            <div style="color: red " th:if="${#fields.hasErrors('playlistname')}" th:errors="*{playlistname}"></div>
+            <p>Фотография</p>
+            <input class="form-control" th:field="*{photo}" type="file" name="photo" placeholder="Выберите фото">
+            <div style="color: red " th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></div>
+            <br>
+            <button type="submit" class="btn btn-outline-primary mybtn">Сохранить изменения</button>
+        </form>
+    </div>
+</div>
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

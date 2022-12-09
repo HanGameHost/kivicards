@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Издатель: ' + ${producer.lastname}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: mainheader"></div>
+
+<div class="div-panel">
+    <h1>Изменение издательства</h1>
+    <div th:each="el:${producer}">
+        <form th:object="${producer}" method="post">
+            <p>Имя Издательства</p>
+            <input class="form-control" th:field="*{lastname}" type="text" name="lastname" placeholder="Введите имя издательства">
+            <div style="color: red " th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
+            <p>Страна</p>
+            <input class="form-control" th:field="*{firstname}" type="text" name="firstname" placeholder="Введите страну издательства">
+            <div style="color: red " th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></div>
+
+            <div style="color: red " th:if="${#fields.hasErrors('middlename')}" th:errors="*{middlename}"></div>
+            <p>Фотография</p>
+            <input class="form-control" th:field="*{avatar}" type="file" name="avatar" placeholder="Добавить фотографию">
+            <div style="color: red " th:if="${#fields.hasErrors('avatar')}" th:errors="*{avatar}"></div>
+            <br>
+            <button type="submit" class="btn btn-outline-primary mybtn">Сохранить изменения</button>
+        </form>
+    </div>
+</div>
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

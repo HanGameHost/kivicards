@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Альбом</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: mainheader"></div>
+
+<div class="div-panel">
+  <h1>Корзина</h1>
+  <a class="btn btn-outline-primary mybtn" href="/playlist/add/">Создать Корзину</a>
+
+  <h2>Все покупки:</h2>
+  <div th:each="el : ${playlist}">
+    <h3>Подробнее: </h3>
+    <p>Название магазина: </p>
+    <p class="myp" th:text="${el.playlistname}"></p>
+    <p>Фото магазина: </p>
+    <p class="myp" th:text="${el.photo}"></p>
+    <a th:href="'/playlist/' + ${el.id}" class="btn btn-outline-secondary mybtn">Подробнее</a>
+  </div>
+</div>
+
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

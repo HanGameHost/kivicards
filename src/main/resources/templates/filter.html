@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: mainheader"></div>
+
+<div class="div-panel">
+  <h2>Поиск магазина</h2>
+  <form method="post" th:action="${'/filter/result'}">
+    <input class="form-control" type="text" name="albumname">
+    <button type="submit" class="btn btn-outline-primary mybtn">Найти</button>
+    <div th:each="el : ${aresult}">
+      <p>Название магазина:</p>
+      <p class="myp" th:text="${el.albumname}"></p>
+      <p>Фотография магазина:</p>
+      <p class="myp" th:text="${el.photo}"></p>
+      <p>Карточки:</p>
+      <div th:each="ar: ${el.artists}">
+        <p class="myp" th:text="${ar.artistname}"></p>
+      </div>
+      <p>Фандомы: </p>
+      <div th:each="tra : ${el.tracks}">
+        <p th:text="${tra.trackname}"></p>
+      </div>
+    </div>
+  </form>
+
+  <h2>Поиск карточек</h2>
+  <form method="post" th:action="${'/filter/result'}">
+    <input class="form-control" type="text" name="trackname">
+    <button type="submit" class="btn btn-outline-primary mybtn" style="">Найти</button>
+    <div th:each="el : ${tresult}">
+      <p>Название карточек:</p>
+      <p class="myp" th:text="${el.trackname}"></p>
+      <p>Название жанра:</p>
+      <p class="myp" th:text="${el.genre.getGenrename()}"></p>
+      <p>Название издателя:</p>
+      <p class="myp" th:text="${el.label.getLegaladdress()}"></p>
+      <p>Страна:</p>
+      <p class="myp" th:text="${el.producer.getFirstname()}"></p>
+    </div>
+  </form>
+</div>
+
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

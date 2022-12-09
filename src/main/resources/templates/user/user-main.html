@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Админ панель</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: mainheader"></div>
+
+<div class="div-panel">
+  <h1>Все пользователи</h1>
+  <div th:each="el : ${users}">
+    <p>Имя пользователя</p>
+    <p class="myp" th:text="${el.username}"></p>
+    <p>Роль</p>
+    <p class="myp" th:text="${el.roles}"></p>
+    <a th:href="'/user/' + ${el.id}" class="btn btn-outline-secondary mybtn">Редактировать</a>
+  </div>
+</div>
+
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

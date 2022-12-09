@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="'Пользователь: ' + ${user.username}"></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: mainheader"></div>
+
+<div class="div-panel">
+  <h1>Информация о пользователях</h1>
+  <div th:if="${user}">
+    <form th:action="'/user/' + ${user.id}" method="post">
+      <div>
+        <p class="myp" th:text="${user.username}"></p>
+      </div>
+      <div th:each="el : ${rolesusers}">
+        <input th:id="el" type="checkbox" th:name="${'rolesuser[]'}"
+               th:value="${el}" th:checked="${#lists.contains(user.roles, el)}">
+        <label th:text="${el}"></label>
+      </div>
+      <button class="btn btn-outline-primary mybtn" type="submit">Изменить пользователя</button>
+    </form>
+  </div>
+</div>
+
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

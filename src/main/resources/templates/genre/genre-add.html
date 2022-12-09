@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Создание жанра</title>
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: mainheader"></div>
+<div class="div-panel">
+    <h1>Добавления жанра</h1>
+    <form th:object="${genre}" th:action="${'/genre/add'}" method="post">
+        <p>Название жанра</p>
+        <input class="form-control" th:field="*{genrename}" type="text" name="genrename" placeholder="Введите название жанра">
+        <div style="color: red " th:if="${#fields.hasErrors('genrename')}" th:errors="*{genrename}"></div>
+        <br>
+        <button type="submit" class="btn btn-outline-primary mybtn">Добавить</button>
+    </form>
+    <a href="/" class="btn btn-outline-secondary mybtn">Назад</a>
+</div>
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

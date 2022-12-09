@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Создание издателя</title>
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: mainheader"></div>
+<div class="div-panel">
+    <h1>Добавление издателя</h1>
+    <form th:object="${label}" th:action="${'/label/add'}" method="post">
+        <p>Название издателя</p>
+        <input class="form-control" th:field="*{labelname}" type="text" name="labelname" placeholder="Введите название издателя">
+        <div style="color: red " th:if="${#fields.hasErrors('labelname')}" th:errors="*{labelname}"></div>
+        <p>Юр. адрес</p>
+        <input class="form-control" th:field="*{legaladdress}" type="text" name="legaladdress" placeholder="Введите юр. адрес">
+        <div style="color: red " th:if="${#fields.hasErrors('legaladdress')}" th:errors="*{legaladdress}"></div>
+        <br>
+        <button type="submit" class="btn btn-outline-primary mybtn">Добавить</button>
+    </form>
+    <a href="/" class="btn btn-outline-secondary mybtn">Назад</a>
+</div>
+
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

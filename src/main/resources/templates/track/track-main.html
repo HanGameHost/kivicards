@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Альбом</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/header :: mainheader"></div>
+<div class="div-panel">
+  <h1>Карточки:</h1>
+
+  <a class="btn btn-outline-primary mybtn" href="/track/add/">Добавить свои карточки</a>
+
+  <h2>Все карточки</h2>
+  <div th:each="el : ${track}">
+    <h3>Подробнее:</h3>
+    <p>Название фандома:</p>
+    <p class="myp" th:text="${el.trackname}"></p>
+    <p>Название файла:</p>
+    <p class="myp" th:text="${el.trackfile}"></p>
+    <p>Название жанра:</p>
+    <p class="myp" th:text="${el.genre.getGenrename()}"></p>
+    <p>Название издателя:</p>
+    <p class="myp" th:text="${el.label.getLabelname()}"></p>
+    <p>Юр. адрес:</p>
+    <p class="myp" th:text="${el.label.getLegaladdress()}"></p>
+    <a th:href="'/track/' + ${el.id}" class="btn btn-outline-secondary mybtn">Подробнее</a>
+  </div>
+</div>
+
+<div th:insert="fragments/footer :: mainfooter"></div>
+</body>
+</html>

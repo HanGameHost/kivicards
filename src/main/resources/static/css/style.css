@@ -1,0 +1,34 @@
+.reg-cen{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.div-panel{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.mybtn{
+    margin: 5px;
+}
+
+.myp{
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.panel{
+    font-size: 2.4em;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
